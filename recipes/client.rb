@@ -24,7 +24,7 @@ require 'base64'
 # install the corosync package
 %w{corosync haveged}.each do |p|
   package p do
-    action :install
+    action node["osops"]["do_package_upgrades"] == true ? :upgrade : :install
   end
 end
 
